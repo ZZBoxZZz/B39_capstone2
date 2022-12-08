@@ -18,20 +18,20 @@ const renderHTML = (data) => {
                 <td>${product.frontCamera}</td>
                 <td>
                 
-                <img width ="50px" height ="50px"  src="${product.img}"
+                <img width ="50px" height ="50px"  src="${product.img}"/>
                 
                 </td>
                 <td>${product.desc}</td>
                 <td>${product.type}</td>
                 <td>
-                <button class="btn btn-warning" onClick=()>Edit</button>
+                <button id="editProBtn" class="btn btn-warning" onclick="" data-toggle ="modal" data-target="#myModal">Edit</button>
                 <br>
-                <button class="btn btn-danger" onClick=()>Delete</button>
+                <button id="deleteProBtn" class="btn btn-danger" onclick="deleteProduct(${product.id})">Delete</button>
                 </td>
             </tr>
             `;
         });
-        getEle("tblDanhSachNguoiDung").innerHTML = content;
+        getEle("tblDanhSachSanPham").innerHTML = content;
     }
 }
 
@@ -46,5 +46,32 @@ const getListProduct = () => {
         console.log(error);
     })
 };
-
 getListProduct();
+function deleteProduct(id){
+    productServices.callApi(`products/${id}`,"DELETE",null)
+    .then(() => {
+        getListProduct();
+    })
+    .catch((error) => {
+        console.log(error);
+    })
+}
+window.deleteProduct =deleteProduct;
+
+getEle("btnThemSanPham").addEventListener("click", () =>{
+    getEle("modalTitle").innerHTML = "Thêm sản phẩm";
+    getEle("btnCapNhat").style.display ="none";
+    getEle("btnThem").style.display ="block";
+});
+
+const getInfoSanPham = () => { 
+    
+    const tenSP = getEle("Ten").value;
+    const giaSP = getEle("Gia").value;
+    const manHinh = getEle("Manhinh").value;
+    const cameraSau = getEle("CameraSau").value;
+    const cameraTruoc = getEle("CameraTruoc").value;
+    const hinhAnh = getEle("HinhAnh").value;
+    const moTa = getEle("MoTa").value;
+    const loaiSP = getEle("MoTa").value;
+}
