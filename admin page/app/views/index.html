@@ -170,7 +170,7 @@
             <!-- Modal Header -->
             <div class="modal-header">
               <h4 id="modalTitle" class="modal-title">Modal Heading</h4>
-              <button type="button" class="close" data-dismiss="modal">
+              <button type="button" class="close" data-dismiss="modal" onclick="refresh()">
                 &times;
               </button>
             </div>
@@ -183,6 +183,11 @@
                   class="form-control"
                   placeholder="Nhập vào tên"
                 />
+                <div
+                  id="errorTen"
+                  style="display: none"
+                  class="text-danger"
+                ></div>
               </div>
               <div class="form-group">
                 <label>Gía</label>
@@ -198,7 +203,6 @@
                   id="Manhinh"
                   class="form-control"
                   placeholder="Nhập vào kích thước màn hình"
-                  type="password"
                 />
               </div>
               <div class="form-group">
@@ -234,7 +238,8 @@
                 <select class="form-control" id="loaiDT">
                   <option>Chọn loại điện thoại</option>
                   <option value="iphone">iphone</option>
-                  <option value="android">android</option>
+                  <option value="Samsung">Samsung</option>
+                  <option value="Iphone">Iphone</option>
                 </select>
               </div>
             </div>
@@ -244,6 +249,7 @@
               type="button"
               class="btn btn-secondary"
               data-dismiss="modal"
+              onclick="refresh()"
             >
               Close
             </button>
