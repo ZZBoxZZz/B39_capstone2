@@ -174,3 +174,22 @@ const refresh = () => {
 
 window.refresh = refresh;
 
+/**Filter */
+getEle("sortLoai").addEventListener("change", () =>{
+  const value = getEle("sortLoai").value;
+  productServices.callApi(`products`, "GET", null)
+  .then((result)=>{
+    const data = result.data;
+    let listFilter = data;
+    
+    if(value !=="all"){
+      listFilter = data.filter((product)=>{
+        return product.type === value;
+      })
+    } 
+    renderHTML(listFilter);
+  })
+  .catch((error)=>{
+    console.log(error);
+  })  
+})
