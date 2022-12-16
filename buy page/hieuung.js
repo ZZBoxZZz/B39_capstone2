@@ -37,7 +37,7 @@ var giohang = new Array();  //du lieu gio hang
                 '<td>'+
                 '<button onclick="xoasp(this)">Xóa</button>'+
                 '</td>'+
-            '</tr>'; 
+            '</tr>';
             }
             ttgh +='<tr>'+
                 '<th colspan="6">Tổng đơn hàng</th>'+
