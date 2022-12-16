@@ -48,6 +48,7 @@ const getListProduct = () => {
         console.log(error);
     })
 };
+window.getListProduct =deleteProduct;
 getListProduct();
 
 function deleteProduct(id){
@@ -69,6 +70,7 @@ getEle("btnThemSanPham").addEventListener("click", () =>{
 
 const getInfoSanPham = () => { 
     
+    const idSP = getEle("id").value;
     const tenSP = getEle("Ten").value;
     const giaSP = getEle("Gia").value;
     const manHinh = getEle("Manhinh").value;
@@ -91,7 +93,7 @@ const getInfoSanPham = () => {
 
     // if (!isValid) return;
 
-    const product = new Product ("",tenSP, giaSP, manHinh, cameraSau, cameraTruoc, hinhAnh, moTa, loaiDT);
+    const product = new Product (idSP,tenSP, giaSP, manHinh, cameraSau, cameraTruoc, hinhAnh, moTa, loaiDT);
 
     return product;
 }
@@ -124,6 +126,7 @@ const editProduct = (id) => {
       const product = result.data;
       console.log(product);
     //   getEle("foodID").value = food.id;
+      getEle("id").value = product.id;
       getEle("Ten").value = product.name;
       getEle("Gia").value = product.price;
       getEle("Manhinh").value = product.screen;
@@ -141,24 +144,25 @@ const editProduct = (id) => {
   
 window.editProduct = editProduct;
 
+
 /**Update */
 getEle("btnCapNhat").addEventListener("click", () => {
 
-    const product = getInfoSanPham();
-    console.log(product);
-    productServices.callApi(`products/${product.id}`, "PUT", JSON.stringify(product))
-      .then(() => {
-        getListProduct();
-        document.getElementsByClassName("close")[0].click();
-      })
-      .catch((error) => {
-        console.log(error);
-      }); 
-  });
+  const product = getInfoSanPham();
+  console.log(product);
+  productServices.callApi(`products/${product.id}`, "PUT", product)
+    .then(() => {
+      getListProduct();
+      document.getElementsByClassName("close")[0].click();
+    })
+    .catch((error) => {
+      console.log(error);
+    }); 
+});
 
 
 const refresh = () => {
-    getEle("Ten").value = '';
+      getEle("Ten").value = '';
       getEle("Gia").value = '';
       getEle("Manhinh").value = '';
       getEle("CameraSau").value = '';
