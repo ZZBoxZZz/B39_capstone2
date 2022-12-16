@@ -1,9 +1,9 @@
-import Validation from "./../validation/validation.js";
+
 import Product from "./../models/product.js";
 import productService from "./../services/productService.js";
 
 const productServices = new productService();
-
+const validation = new Validation();
 const getEle  = (id) => document.getElementById(id);
 
 const renderHTML = (data) => {
@@ -68,7 +68,7 @@ getEle("btnThemSanPham").addEventListener("click", () =>{
     getEle("btnThem").style.display ="block";
 });
 
-const getInfoSanPham = () => { 
+const getInfoSanPham = (isAdd) => { 
     
     const idSP = getEle("id").value;
     const tenSP = getEle("Ten").value;
@@ -83,17 +83,47 @@ const getInfoSanPham = () => {
     const hinhAnh = getEle("HinhAnh").value;
     const moTa = getEle("MoTa").value;
     const loaiDT = getEle("loaiDT").value;
-
-    // let isValid = true;
-
-    // if(isAdd){
-    //     isValid =
-    //     Validation.kiemTraRong(tenSP, "errorTen", "(*) Vui long nhap tenSP");
-    // };
-
-    // if (!isValid) return;
-
     const product = new Product (idSP,tenSP, giaSP, manHinh, cameraSau, cameraTruoc, hinhAnh, moTa, loaiDT);
+    let isValid = true;
+
+    if(isAdd){
+      
+      isValid &=
+      validation.kiemTraRong(idSP, "errorSTT", "(*) Vui long nhap maSP");
+    };
+    //tenSV
+    isValid &=
+    validation.kiemTraRong(tenSP, "errorTen", "(*) Vui long nhap tên")&&validation.kiemTraTrungTenSP(
+      tenSP,
+      "errorTen",
+      "(*) Tên SV da ton tai",
+      product
+    );
+    //giaSP
+    isValid &=
+    validation.kiemTraRong(giaSP, "errorPrice", "(*) Vui long nhap giá");
+    //manHinh
+    isValid &=
+    validation.kiemTraRong(manHinh, "errorScreen", "(*) Vui long nhap kích thước màn");
+    //cameraSau
+    isValid &=
+    validation.kiemTraRong(cameraSau, "errorbackCamera", "(*) Vui long nhap thông số cam sau");
+    //cameraTruoc
+    isValid &=
+    validation.kiemTraRong(cameraTruoc, "errorfrontCamera", "(*) Vui long nhap thông số cam trước");
+    //hinhAnh
+    isValid &=
+    validation.kiemTraRong(hinhAnh, "errorPic", "(*) Vui long nhap l;ink hình");
+    //moTa
+    isValid &=
+    validation.kiemTraRong(moTa, "errorDecr", "(*) Vui long nhap mô tả");
+    //loaiDT
+    isValid &=
+    validation.kiemTraChonLoai('loaiDT', "errorType", "(*) Vui long chọn loại");
+
+    if (!isValid) return;
+
+    
 
     return product;
 }

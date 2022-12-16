@@ -209,6 +209,11 @@
                   class="form-control"
                   placeholder="Nhập vào giá"
                 />
+                <div
+                  id="errorPrice"
+                  style="display: none"
+                  class="text-danger"
+                ></div>
               </div>
               <div class="form-group">
                 <label>Màn hình</label>
@@ -217,6 +222,11 @@
                   class="form-control"
                   placeholder="Nhập vào kích thước màn hình"
                 />
+                <div
+                  id="errorScreen"
+                  style="display: none"
+                  class="text-danger"
+                ></div>
               </div>
               <div class="form-group">
                 <label>Camera sau</label>
@@ -225,6 +235,11 @@
                   class="form-control"
                   placeholder="Nhập vào thông số cam sau"
                 />
+                <div
+                  id="errorbackCamera"
+                  style="display: none"
+                  class="text-danger"
+                ></div>
               </div>  
               <div class="form-group">
                 <label>Camera trước</label>
@@ -233,6 +248,11 @@
                   class="form-control"
                   placeholder="Nhập vào thông số cam trước"
                 />
+                <div
+                  id="errorfrontCamera"
+                  style="display: none"
+                  class="text-danger"
+                ></div>
               </div>
               <div class="form-group">
                 <label>Hình Ảnh</label>
@@ -241,10 +261,20 @@
                   class="form-control"
                   placeholder="Nhập vào thông số cam trước"
                 />
+                <div
+                  id="errorPic"
+                  style="display: none"
+                  class="text-danger"
+                ></div>
               </div>               
               <div class="form-group">
                 <label>Mô tả</label>
-                <textarea name="" id="MoTa" class="form-control" placeholder="Nhập vào mô tả"></textarea>  
+                <textarea name="" id="MoTa" class="form-control" placeholder="Nhập vào mô tả"></textarea>
+                <div
+                  id="errorDecr"
+                  style="display: none"
+                  class="text-danger"
+                ></div>  
               </div>
               <div class="form-group">
                 <label for="">Loại Điện Thoại: </label>
@@ -254,6 +284,11 @@
                   <option value="Samsung">Samsung</option>
                   <option value="Iphone">Iphone</option>
                 </select>
+                <div
+                  id="errorType"
+                  style="display: none"
+                  class="text-danger"
+                ></div> 
               </div>
             </div>
             <!-- Modal footer -->
@@ -307,6 +342,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js" integrity="sha512-zJYu9ICC+mWF3+dJ4QC34N9RA0OVS1XtPbnf6oXlvGrLGNB8egsEzu/5wgG90I61hOOKvcywoLzwNmPqGAdATA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- <script src="../models/product.js"></script> -->
     <!-- <script src="../services/productService.js"></script> -->
+    <script src="../validation/validation.js"></script>
     <script type="module" src="../controllers/main.js"></script>
   </body>
 </html>
